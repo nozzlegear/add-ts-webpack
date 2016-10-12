@@ -19,7 +19,7 @@ if (!fileSystem.existsSync(filepath)) {
     program.help();
 }
 
-let packageContents: {devDependencies?: Object};
+let packageContents: {devDependencies?: Object, scripts?: Object};
 
 try {
     packageContents = JSON.parse(fileSystem.readFileSync(filepath).toString());
@@ -54,7 +54,11 @@ const devDependencies = Object.assign({}, {
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
 }, packageContents.devDependencies);
-packageContents = Object.assign({}, packageContents, {devDependencies});
+const scripts = Object.assign({}, {
+    "tsbuild" : "webpack",
+    "tswatch" : "webpack-dev-server --inline --hot --port 9002"
+}, packageContents.scripts);
+packageContents = Object.assign({}, packageContents, {devDependencies, scripts});
 
 // Write the updated package.json back to the file
 fileSystem.writeFileSync(filepath, JSON.stringify(packageContents, null, 2));

@@ -5,6 +5,8 @@
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "scripts": {
+    "tsbuild": "webpack",
+    "tswatch": "webpack-dev-server --inline --hot --port 9002",
     "build": "tsc -p .",
     "test": "npm run build && node dist/index.js"
   },
