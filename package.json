@@ -1,0 +1,23 @@
+{
+  "name": "add-ts-webpack",
+  "version": "1.0.0",
+  "description": "Adds a webpack config file and package.json dependencies for TypeScript + React + Babel apps",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "npm run build && node dist/index.js -f package.sample.json"
+  },
+  "repository": {
+    "url": "https://github.com/nozzlegear/add-ts-webpack",
+    "type": "git"
+  },
+  "author": "Joshua Harms <joshua@nozzlegear.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/commander": "^2.3.30",
+    "@types/lodash": "^4.14.37",
+    "commander": "^2.9.0",
+    "lodash": "^4.16.4"
+  }
+}
